@@ -67,7 +67,10 @@ mod tests {
 
     #[test]
     fn test_serialize_with_date() {
-        let release = ReleaseDate::with_date("Test Product", NaiveDate::from_ymd_opt(2024, 12, 25).unwrap());
+        let release = ReleaseDate::with_date(
+            "Test Product",
+            NaiveDate::from_ymd_opt(2024, 12, 25).unwrap(),
+        );
         let json = serde_json::to_string(&release).unwrap();
         assert!(json.contains("2024-12-25"));
     }
@@ -83,7 +86,10 @@ mod tests {
     fn test_deserialize_with_date() {
         let json = r#"{"title":"Test Product","date":"2024-12-25"}"#;
         let release: ReleaseDate = serde_json::from_str(json).unwrap();
-        assert_eq!(release.date, Some(NaiveDate::from_ymd_opt(2024, 12, 25).unwrap()));
+        assert_eq!(
+            release.date,
+            Some(NaiveDate::from_ymd_opt(2024, 12, 25).unwrap())
+        );
     }
 
     #[test]
