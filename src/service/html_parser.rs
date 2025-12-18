@@ -36,17 +36,15 @@ impl HtmlParser {
     }
 
     fn parse_static_elements(&self, document: &Html) -> Result<Vec<ReleaseDate>> {
-        let info_selector =
-            Selector::parse(".information").map_err(|e| AppError::HtmlParse {
-                message: format!("Invalid selector: {e}"),
-            })?;
+        let info_selector = Selector::parse(".information").map_err(|e| AppError::HtmlParse {
+            message: format!("Invalid selector: {e}"),
+        })?;
         let date_selector = Selector::parse(".date").map_err(|e| AppError::HtmlParse {
             message: format!("Invalid selector: {e}"),
         })?;
-        let subject_selector =
-            Selector::parse(".subject").map_err(|e| AppError::HtmlParse {
-                message: format!("Invalid selector: {e}"),
-            })?;
+        let subject_selector = Selector::parse(".subject").map_err(|e| AppError::HtmlParse {
+            message: format!("Invalid selector: {e}"),
+        })?;
         let theme_selector = Selector::parse(".theme").map_err(|e| AppError::HtmlParse {
             message: format!("Invalid selector: {e}"),
         })?;
